@@ -1,11 +1,11 @@
 ################################################
 # Title     : Linear Algebra
 # Author    : balarcode
-# Version   : 1.0
-# Date      : 29th October 2024
+# Version   : 1.1
+# Date      : 30th October 2024
 # File Type : Python Script / Program
 # File Test : Verified on Python 3.12.6
-# Comments  : Concepts and techniques from linear algebra implemented in Python.
+# Comments  : Algorithms, concepts and techniques from linear algebra implemented in Python.
 #
 # All Rights Reserved.
 ################################################
@@ -83,3 +83,21 @@ print(scalar_proj_x_over_y)
 vector_proj_x_over_y = (x @ y) / (np.linalg.norm(y) * np.linalg.norm(y)) * y
 print("\nVector projection of vector x over vector y: ")
 print(vector_proj_x_over_y)
+
+################################################
+# Change of Basis
+################################################
+b0_x = np.array([1, 0])
+b0_y = np.array([0, 1])
+r0 = 2 * b0_x + 2 * b0_y # Vector in a space spanned by basis vectors b0_x and b0_y
+print("\nVector in old basis vector space: ")
+print(r0)
+
+# New basis
+b1_x = np.array([3, 1])
+b1_y = np.array([-1, 3])
+r1_00 = (r0 @ b1_x) / (np.linalg.norm(b1_x) * np.linalg.norm(b1_x)) * b1_x
+r1_01 = (r0 @ b1_y) / (np.linalg.norm(b1_y) * np.linalg.norm(b1_y)) * b1_y
+r1 = r1_00 + r1_01
+print("\nVector in new basis vector space: ")
+print(r1)
