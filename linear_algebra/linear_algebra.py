@@ -1,8 +1,8 @@
 ################################################
 # Title     : Linear Algebra
 # Author    : balarcode
-# Version   : 1.1
-# Date      : 30th October 2024
+# Version   : 1.2
+# Date      : 31st October 2024
 # File Type : Python Script / Program
 # File Test : Verified on Python 3.12.6
 # Comments  : Algorithms, concepts and techniques from linear algebra implemented in Python.
@@ -101,3 +101,25 @@ r1_01 = (r0 @ b1_y) / (np.linalg.norm(b1_y) * np.linalg.norm(b1_y)) * b1_y
 r1 = r1_00 + r1_01
 print("\nVector in new basis vector space: ")
 print(r1)
+
+################################################
+# Cauchy-Schwarz Inequality
+################################################
+s = np.array([1, 2, 3, 4, 5])
+r = np.array([5, 4, 3, 2, 1])
+# NOTE: || s || = <s, s> ^ (1/2) is the 2-norm of vector, s which is also an induced norm.
+print("\nCauchy-Schwarz Inequality: <s, r> <= || s || || r || i.e. {} <= {} * {}".format((s @ r), np.linalg.norm(s), np.linalg.norm(r)))
+
+################################################
+# Weighted Inner Product
+################################################
+x1 = np.array([1, 1])
+x2 = np.array([2, 1])
+print("\nTwo vectors, x1 and x2 are made orthogonal with a weighted inner product.")
+print("Inner product of vectors, x1 and x2: {}".format(x1 @ x2))
+W = np.array([[2, -2],
+              [-2, 2]])
+print("Weight Matrix, W: ")
+print(W)
+print("Weighted inner product of vectors, x1 and x2: {}".format((x1 @ W @ x2)))
+print("W is a positive definite matrix when used with vector, x2 i.e. weighted norm of x2 is greater than 0: {}".format(x2 @ W @ x2))
