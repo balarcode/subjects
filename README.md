@@ -1,5 +1,5 @@
-# test
-Practical implementation of algorithms, concepts and techniques from important subjects such as Linear Algebra, Random Processes and Probability.
+# subjects
+Practical implementation of algorithms, concepts and techniques from subjects such as Linear Algebra, Random Processes and Probability.
 
 ## Citation
 
