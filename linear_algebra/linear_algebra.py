@@ -1,8 +1,8 @@
 ################################################
 # Title     : Linear Algebra
 # Author    : balarcode
-# Version   : 1.2
-# Date      : 31st October 2024
+# Version   : 1.3
+# Date      : 14th November 2024
 # File Type : Python Script / Program
 # File Test : Verified on Python 3.12.6
 # Comments  : Algorithms, concepts and techniques from linear algebra implemented in Python.
@@ -123,3 +123,23 @@ print("Weight Matrix, W: ")
 print(W)
 print("Weighted inner product of vectors, x1 and x2: {}".format((x1 @ W @ x2)))
 print("W is a positive definite matrix when used with vector, x2 i.e. weighted norm of x2 is greater than 0: {}".format(x2 @ W @ x2))
+
+################################################
+# Angle between Vectors
+################################################
+# Uses a non-standard inner product where-in the
+# matrix A defines the inner product
+def find_angle(A, x, y):
+    """Compute the angle"""
+    inner_prod = x.T @ A @ y
+    norm_x = np.sqrt(x.T @ A @ x)
+    norm_y = np.sqrt(y.T @ A @ y)
+    cos_w = inner_prod/(norm_x*norm_y)
+    angle = np.arccos(cos_w)
+    return np.round(angle, 2) # Round up to 2 decimal places
+
+A = np.array([[1, 0, 0],[0, 2, -1],[0, -1, 3]])
+x = np.array([1, 1, 1])
+y = np.array([2, -1, 0])
+angle = find_angle(A, x, y)
+print("\nAngle between two vectors, x1 and x2 using a non-standard inner product: {} radians".format(angle))
