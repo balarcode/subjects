@@ -1,8 +1,8 @@
 ################################################
 # Title     : Linear Algebra
 # Author    : balarcode
-# Version   : 1.3
-# Date      : 14th November 2024
+# Version   : 1.4
+# Date      : 18th November 2024
 # File Type : Python Script / Program
 # File Test : Verified on Python 3.12.6
 # Comments  : Algorithms, concepts and techniques from linear algebra implemented in Python.
@@ -143,3 +143,15 @@ x = np.array([1, 1, 1])
 y = np.array([2, -1, 0])
 angle = find_angle(A, x, y)
 print("\nAngle between two vectors, x1 and x2 using a non-standard inner product: {} radians".format(angle))
+
+################################################
+# Projection of 3D Data onto a 2D Subspace
+################################################
+x = np.array([6, 0, 0])
+b1 = np.array([1, 1, 1])
+b2 = np.array([0, 1, 2])
+B = np.array([b1, b2]).T # Form the basis matrix containing all basis that spans the 2D subspace, U
+projection_matrix = B @ np.linalg.inv(B.T @ B) @ B.T
+print("\nProjection matrix: {}".format(projection_matrix))
+projection_X_on_U = projection_matrix @ x.T
+print("Projection of a 3D vector on a 2D subspace: {}".format(projection_X_on_U))
