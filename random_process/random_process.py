@@ -1,8 +1,8 @@
 ################################################
 # Title     : Random Process
 # Author    : balarcode
-# Version   : 1.1
-# Date      : 10th December 2024
+# Version   : 1.2
+# Date      : 11th December 2024
 # File Type : Python Script / Program
 # File Test : Verified on Python 3.12.6
 # Comments  : Algorithms, concepts and techniques from
@@ -15,6 +15,24 @@
 # %%
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+################################################
+# Function Definitions
+################################################
+def norm_plot(ax, data):
+    scale = (np.max(data) - np.min(data)) * 0.2
+    x = np.linspace(np.min(data)-scale, np.max(data)+scale, 50)
+    _,bins, _ = ax.hist(data, x, color="xkcd:azure")
+
+    mu = np.mean(data)
+    sigma = np.std(data)
+    dist = norm.pdf(bins, loc=mu, scale=sigma)
+
+    axr = ax.twinx()
+    axr.plot(bins, dist, color="orange", lw=2)
+    axr.set_ylim(bottom=0)
+    axr.axis('off')
 
 ################################################
 # Mean of N-Dimensional Random Dataset
@@ -72,7 +90,7 @@ Xnorm = (X - mu)/(max - min)
 # Plot two dimensions from original and mean normalized datasets
 fig, ax = plt.subplots(figsize=(6, 6))
 ax.scatter(X[:, 0], X[:, 1], label='original data')
-ax.scatter(Xnorm[:, 0], Xnorm[:, 1], label='mean normalized data')
+ax.scatter(Xnorm[:, 0], Xnorm[:, 1], label='mean normalized data', color="orange")
 plt.axis('equal')
 plt.legend()
 ax.set(xlabel='$x_0$', ylabel='$x_1$')
@@ -98,15 +116,44 @@ mu = np.sum(X, axis=0) / N
 sigma = np.sqrt(np.sum((X - mu) ** 2, axis=0) / N)
 print(f"mu: {mu}, sigma: {sigma}")
 Xnorm = (X - mu)/sigma
-#print(f"N-Dimensional Mean Normalized Dataset: {Xnorm}")
+#print(f"N-Dimensional Standardized Dataset: {Xnorm}")
 
-# Plot two dimensions from original and mean normalized datasets
+# Plot first two features from original and standardized datasets as a scatter plot
 fig, ax = plt.subplots(figsize=(6, 6))
 ax.scatter(X[:, 0], X[:, 1], label='original data')
-ax.scatter(Xnorm[:, 0], Xnorm[:, 1], label='standardized data')
+ax.scatter(Xnorm[:, 0], Xnorm[:, 1], label='standardized data', color="orange")
 plt.axis('equal')
 plt.legend()
 ax.set(xlabel='$x_0$', ylabel='$x_1$')
+plt.show()
+
+# Plot all features from original and standardized datasets (i.e. per dimension)
+fig, ax = plt.subplots(1, 4, figsize=(12, 3))
+for i in range(len(ax)):
+    ax[i].scatter(range(len(X[:, i])), X[:, i], label='original data')
+    ax[i].set_xlabel('$x$'+str(i))
+for i in range(len(ax)):
+    ax[i].scatter(range(len(Xnorm[:, i])), Xnorm[:, i], label='standardized data', color="orange")
+    ax[i].set_xlabel('$x$'+str(i))
+fig.suptitle("Features of original & standardized data (per dimension)")
+ax[0].set_ylabel("output")
+plt.legend()
+plt.show()
+
+# Plot distribution of features from original and standardized datasets (i.e. per dimension)
+fig, ax = plt.subplots(1, 4, figsize=(12, 3))
+for i in range(len(ax)):
+    norm_plot(ax[i], X[:,i], )
+    ax[i].set_xlabel('$x$'+str(i))
+ax[0].set_ylabel("count")
+fig.suptitle("Distribution of features of original data (per dimension)")
+plt.show()
+fig, ax = plt.subplots(1, 4, figsize=(12, 3))
+for i in range(len(ax)):
+    norm_plot(ax[i], Xnorm[:,i], )
+    ax[i].set_xlabel('$x$'+str(i))
+ax[0].set_ylabel("count")
+fig.suptitle("Distribution of features of standardized data (per dimension)")
 plt.show()
 
 # %%
