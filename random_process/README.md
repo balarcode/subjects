@@ -17,3 +17,9 @@ Standardization of N-dimensional dataset is implemented in the source code with 
 ![Standardization](random_process_results/standardization_feature_distribution_original_data.png)
 
 ![Standardization](random_process_results/standardization_feature_distribution_standardized_data.png)
+
+## Citation
+
+Please note that the code and technical details made available are for educational purposes only. The repo is not open for collaboration.
+
+If you happen to use the code from this repo, please cite my user name along with link to my profile: https://github.com/balarcode. Thank you!
