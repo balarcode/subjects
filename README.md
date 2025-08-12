@@ -3,6 +3,8 @@ Practical implementation of algorithms, concepts and techniques from subjects su
 
 ### [Linear Algebra](https://github.com/balarcode/subjects/tree/main/linear_algebra)
 
+### [PyTorch](https://github.com/balarcode/subjects/tree/main/pytorch)
+
 ### [Random Process](https://github.com/balarcode/subjects/tree/main/random_process)
 
 ## Citation
