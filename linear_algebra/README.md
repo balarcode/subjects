@@ -1,4 +1,6 @@
 
+# Linear Algebra
+
 ## Citation
 
 Please note that the code and technical details made available are for educational purposes only. The repo is not open for collaboration.
