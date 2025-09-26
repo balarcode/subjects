@@ -5,7 +5,7 @@ Practical implementation of algorithms, concepts and techniques from subjects su
 
 ### [PyTorch](https://github.com/balarcode/subjects/tree/main/pytorch)
 
-### [Random Process](https://github.com/balarcode/subjects/tree/main/random_process)
+### [Random Processes & Probability](https://github.com/balarcode/subjects/tree/main/random_process)
 
 ## Citation
 
