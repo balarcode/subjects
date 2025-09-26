@@ -1,4 +1,4 @@
-# Random Process
+# Random Processes & Probability
 
 ## 1. Illustration of Concepts
 
